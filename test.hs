@@ -3,6 +3,7 @@ module Main where
 import Preference.Assert
 import Preference.Card
 import Preference.Player
+import Preference.Population
 import Preference.Suite
 import Preference.Move
 
@@ -46,4 +47,8 @@ main = assertTrue  (s7 `beats` cA)
     >> assertEq [s7, s10, sJ, sA] (eligible (card "sQ") cards)
     >> assertEq cards (eligible (card "hQ") cards)
     >> assertEq [dA'] (eligible (card "hQ") cards')
-    >> assertEq [cA] (eligible (card "cQ") cards)
+    >> assertEq [cA]  (eligible (card "cQ") cards)
+    >> assertIn [Talon, East, South, West] (players ThreePlayers East)
+    >> assertIn [Talon, West, East, South] (players ThreePlayers West)
+    >> assertIn [North, East, South, West] (players FourPlayers East)
+    >> assertIn [East, South, West, North] (players FourPlayers South)
