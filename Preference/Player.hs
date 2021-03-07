@@ -1,4 +1,4 @@
-module Player where
+module Preference.Player where
 
 data Player = West | East | South | North | Talon deriving (Eq)
 instance Show Player where

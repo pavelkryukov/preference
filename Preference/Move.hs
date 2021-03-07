@@ -1,8 +1,8 @@
-module Move where
+module Preference.Move where
 
-import Card
-import Player
-import Suite
+import Preference.Card
+import Preference.Player
+import Preference.Suite
 
 data Move = Move Player Card
 

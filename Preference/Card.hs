@@ -1,7 +1,7 @@
-module Card where
+module Preference.Card where
 
-import Suite
-import Utility
+import Preference.Suite
+import Preference.Utility
 
 data Rank = Seven
     | Eight

@@ -1,4 +1,4 @@
-module Suite where
+module Preference.Suite where
 
 data Suite = Spades
     | Clubs

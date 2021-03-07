@@ -1,9 +1,10 @@
 module Main where
 
-import Card
-import Player
-import Suite
-import Move
+import Preference.Assert
+import Preference.Card
+import Preference.Player
+import Preference.Suite
+import Preference.Move
 
 data TricksAmount = SixTricks
     | SevenTricks
@@ -23,16 +24,6 @@ instance Ord Game where
         | a  < b = True
         | a == b = x <= y
         | a  > b = False
-
-assertTrue :: Bool -> IO ()
-assertTrue False = error "assertion failed!"
-assertTrue _     = putStr "+"
-
-assertFalse :: Bool -> IO ()
-assertFalse = (assertTrue . not)
-
-assertEq :: (Eq a) => a -> a -> IO ()
-assertEq a b = assertTrue (a == b)
 
 main = assertTrue  ((card "s7") `beats` (card "cA"))
     >> assertFalse ((card "s7") `beats` (card "sA"))

@@ -1,9 +1,9 @@
-module Hand where
+module Preference.Hand where
 
-import Card
-import Move
-import Player
-import Suite
+import Preference.Card
+import Preference.Move
+import Preference.Player
+import Preference.Suite
 
 data Hand = Hand Player [Card]
 

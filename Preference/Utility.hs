@@ -1,4 +1,4 @@
-module Utility where
+module Preference.Utility where
 
 -- | If the first list is not empty, returns it;
 --   otherwise tries recurslively with tail
