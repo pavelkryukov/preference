@@ -37,6 +37,10 @@ dA' = trump "♦A"
 cards  = [s7, s10, sJ, sA, cA, dA]
 cards' = [s7, s10, sJ, sA, cA, dA']
 
+anySame :: (Eq a) => [a] -> Bool
+anySame (x:xs) = any (x ==) xs || anySame xs
+anySame [] = False
+
 main = assertTrue  (s7 `beats` cA)
     >> assertFalse (s7 `beats` sA)
     >> assertTrue  (sA `beats` dA)
@@ -52,3 +56,7 @@ main = assertTrue  (s7 `beats` cA)
     >> assertIn [Talon, West, East, South] (players ThreePlayers West)
     >> assertIn [North, East, South, West] (players FourPlayers East)
     >> assertIn [East, South, West, North] (players FourPlayers South)
+    >> assertEq (length deck) 32
+    >> assertTrue  (anySame [1, 3, 4, 3])
+    >> assertFalse (anySame cards)
+    >> assertFalse (anySame deck)

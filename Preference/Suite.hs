@@ -3,7 +3,7 @@ module Preference.Suite where
 data Suite = Spades
     | Clubs
     | Diamonds
-    | Hearts deriving (Eq, Ord)
+    | Hearts deriving (Eq, Ord, Enum)
 
 instance Show Suite where
     show Spades   = "♠"

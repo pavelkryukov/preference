@@ -10,7 +10,7 @@ data Rank = Seven
     | Jack
     | Queen
     | King
-    | Ace deriving (Eq, Ord)
+    | Ace deriving (Eq, Ord, Enum)
     
 instance Show Rank where
     show Seven = "7"
@@ -48,7 +48,7 @@ beats x y
     where
         getRank (Trump r1 _) = r1
         getRank (Card  r1 _) = r1
-        
+
 instance Eq Card where
     a == b = (inSuite a b) && (not $ beats a b) && (not $ beats b a)
 
@@ -56,9 +56,12 @@ eligible :: (Suited a) => a -> [Card] -> [Card]
 eligible f = priority . (flist filters) where
     filters = [filter (inSuite f), filter isTrump, id]
 
+deck :: [Card]
+deck = cartesian (Card) (enumFrom Seven) (enumFrom Spades)
+
 instance Show Card where
     show (Card r s) = show s ++ show r
-    
+
 card :: String -> Card
 card (x:xs) = Card (parseR xs) (parseSuite x) where
     parseR "7" = Seven
