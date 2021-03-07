@@ -48,6 +48,9 @@ beats x y
     where
         getRank (Trump r1 _) = r1
         getRank (Card  r1 _) = r1
+        
+instance Eq Card where
+    a == b = (inSuite a b) && (not $ beats a b) && (not $ beats b a)
 
 eligible :: (Suited a) => a -> [Card] -> [Card]
 eligible f = priority . (flist filters) where
