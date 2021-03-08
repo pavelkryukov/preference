@@ -13,5 +13,5 @@ flist fs a = map ($ a) fs
 
 -- | Cartesian product
 cartesian :: (a -> b -> c) -> [a] -> [b] -> [c]
-cartesian f (x:xs) y = (map (f x) y) ++ cartesian f xs y
 cartesian f [] _ = []
+cartesian f (x:xs) y = (map (f x) y) ++ cartesian f xs y
